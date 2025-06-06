@@ -2,9 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EL LIBRO ABIERTO</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -22,186 +21,311 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* Header principal */
     .encabezado-profesional {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 15px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 20px;
+      position: relative;
       background-color: rgba(248, 195, 244, 0.65);
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       border-radius: 12px;
-      margin: 10px;
+      margin: 20px;
       backdrop-filter: saturate(180%) blur(10px);
     }
 
+    .contenedor-izquierdo {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      z-index: 10;
+    }
+
     .lexi-img {
-      width: 100px;
-      border-radius: 10px;
+      width: 120px;
+      height: auto;
+      user-select: none;
+      border-radius: 12px;
       box-shadow: 0 4px 8px rgba(196, 62, 112, 0.3);
-      margin-bottom: 10px;
+      background-color: #fff;
     }
 
     .botones-header {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      width: 100%;
+      gap: 12px;
+      align-items: center;
     }
 
     .botones-header button {
+      height: 60px;
       font-size: 14px;
       cursor: pointer;
-      padding: 8px;
+      padding: 8px 12px;
       border-radius: 10px;
       border: none;
       background-color: #c43e70;
       color: white;
       font-weight: bold;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: background-color 0.3s ease;
+      min-width: 110px;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 8px rgba(196, 62, 112, 0.4);
     }
 
     .botones-header button:hover {
       background-color: #a32d58;
+      box-shadow: 0 6px 12px rgba(163, 45, 88, 0.6);
     }
 
-    .botones-header .icon {
-      font-size: 20px;
-      margin-right: 6px;
+    .botones-header button span.icon {
+      font-size: 24px;
+      margin-bottom: 4px;
     }
 
+    /* Contenedor central (título, imagen y subtítulo) */
     .contenedor-central {
-      text-align: center;
-      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      /* En pantallas grandes se separa con margen,
+         pero en móviles se anula ese margen desde la media query */
+      margin-left: 8cm;
+      position: relative;
+      margin-top: -20px;
     }
 
     .contenedor-central svg {
-      width: 100%;
-      height: auto;
+      margin-top: 0;
+      margin-bottom: -20px;
     }
 
     .logo-centro {
-      width: 140px;
-      margin: 10px auto;
+      width: 180px;  /* Tamaño reducido para celular */
+      height: auto;
       display: block;
-      border-radius: 10px;
-      background-color: #fff;
+      margin-top: 10px;
+      border-radius: 12px;
       box-shadow: 0 6px 15px rgba(196, 62, 112, 0.3);
+      background-color: #fff;
     }
 
     .subtitulo {
       font-family: 'Fredoka One', cursive;
-      font-size: 16px;
+      font-size: 16px;  /* Tamaño reducido */
       font-weight: bold;
       color: #5b2a46;
       margin-top: 10px;
+      text-align: center;
+      text-shadow: 0 1px 3px rgba(255,255,255,0.7);
     }
 
-    .selector-idioma,
-    .buscador {
-      width: 90%;
-      margin-top: 10px;
+    /* Selector de idioma y buscador */
+    .selector-idioma, .buscador {
+      position: absolute;
       background: rgba(255, 255, 255, 0.8);
       padding: 6px 10px;
-      border-radius: 10px;
-      text-align: center;
-    }
-
-    .selector-idioma select,
-    .buscador input {
-      width: 100%;
-      padding: 6px;
-      font-size: 14px;
-      margin-top: 5px;
-      border-radius: 8px;
-      border: 1px solid #c43e70;
-    }
-
-    .panel {
-      background: linear-gradient(135deg, #f8c3f4cc, #ffcceeee);
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(196, 62, 112, 0.25);
-      padding: 20px;
-      margin: 15px auto;
-      width: 90%;
-      max-width: 400px;
-      color: #5b2a46;
-    }
-
-    .panel h2 {
+      box-shadow: 0 4px 8px rgba(196, 62, 112, 0.2);
       font-size: 18px;
-      color: #c43e70;
+      z-index: 15;
+    }
+    .selector-idioma {
+      top: 10px;
+      right: 20px;
+    }
+    .buscador {
+      top: 60px;
+      right: 20px;
+    }
+    .buscador input {
+      border: 1px solid #c43e70;
+      border-radius: 6px;
+      padding: 5px 8px;
+      font-size: 14px;
+      width: 180px;
+      outline-offset: 2px;
+      transition: box-shadow 0.3s ease;
+    }
+    .buscador input:focus {
+      box-shadow: 0 0 6px 2px #c43e70aa;
+      border-color: #a32d58;
+    }
+
+    /* Panel de login y registro */
+    .panel {
+      margin: 15px;
+      background: linear-gradient(135deg, #f8c3f4cc, #ffcceeee);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(196, 62, 112, 0.25);
+      padding: 20px 25px;
+      max-width: 450px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #5b2a46;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .panel:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(196, 62, 112, 0.4);
+    }
+    .panel h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 14px;
       text-align: center;
-      margin-bottom: 12px;
+      color: #c43e70;
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7);
     }
-
     .panel label {
-      font-weight: 600;
-      margin: 8px 0 4px;
       display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+      margin-top: 10px;
+      color: #7b4061;
     }
-
-    .panel input {
+    .panel input[type="text"],
+    .panel input[type="password"] {
       width: 100%;
-      padding: 8px;
+      padding: 8px 10px;
+      margin-top: 3px;
       border: 2px solid #c43e70;
       border-radius: 10px;
-      margin-bottom: 10px;
+      font-size: 14px;
+      outline-offset: 2px;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+      color: #5b2a46;
       background-color: #fff0f8;
     }
-
+    .panel input[type="text"]:focus,
+    .panel input[type="password"]:focus {
+      border-color: #a32d58;
+      box-shadow: 0 0 6px 2px #c43e70aa;
+    }
     .panel .mensaje-error {
+      margin: 10px 0 0 0;
+      font-weight: 700;
       color: #a32d58;
-      font-weight: bold;
-      min-height: 20px;
+      min-height: 1.2em;
       text-align: center;
     }
-
     .panel button {
-      width: 100%;
-      padding: 10px;
       background-color: #c43e70;
       color: white;
-      font-weight: bold;
+      font-weight: 700;
       border: none;
       border-radius: 10px;
-      margin-top: 10px;
+      padding: 10px 0;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 15px;
+      font-size: 16px;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 5px 10px rgba(196, 62, 112, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
     }
-
     .panel button:hover {
       background-color: #a32d58;
+      box-shadow: 0 7px 14px rgba(163, 45, 88, 0.7);
     }
 
     .oculto {
       display: none;
     }
+    
+    /* Estilos responsive para dispositivos móviles */
+    @media screen and (max-width: 600px) {
+      .encabezado-profesional {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        margin: 10px;
+        position: relative;
+      }
+      .contenedor-izquierdo {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+      }
+      .botones-header {
+        flex-direction: column;
+        gap: 10px;
+      }
+      /* Eliminar margen fijo para centrar el contenido */
+      .contenedor-central {
+        margin-left: 0 !important;
+        margin-top: 10px;
+        align-items: center;
+      }
+      /* Hacer que el SVG se adapte al ancho */
+      .contenedor-central svg {
+        width: 100%;
+        height: auto;
+      }
+      /* Convertir al selector de idioma y buscador en bloques estáticos */
+      .selector-idioma,
+      .buscador {
+        position: static;
+        margin-top: 10px;
+        width: 90%;
+        text-align: center;
+      }
+      .buscador input {
+        width: 100%;
+      }
+    }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 <body>
-
   <header class="encabezado-profesional">
-    <img src="lexi.jpg" alt="Muñequito académico" class="lexi-img" />
-    <div class="botones-header">
-      <button onclick="mostrarPanel('registro')"><span class="icon">📝</span> Registrarse</button>
-      <button onclick="mostrarPanel('login')"><span class="icon">🔑</span> Iniciar sesión</button>
+    <div class="contenedor-izquierdo">
+      <img src="lexi.jpg" alt="Muñequito académico" class="lexi-img" />
+      <div class="botones-header">
+        <button onclick="mostrarPanel('registro')" id="btn-registrarse">
+          <span class="icon">📝</span>
+          <span>Registrarse</span>
+        </button>
+        <button onclick="mostrarPanel('login')" id="btn-iniciar-sesion">
+          <span class="icon">🔑</span>
+          Iniciar sesión
+        </button>
+      </div>
     </div>
 
-    <div class="contenedor-central">
-      <svg viewBox="0 0 600 100">
-        <defs><path id="curve" d="M100,80 Q300,0 500,80" /></defs>
-        <text font-size="28" fill="#c43e70" font-family="Fredoka One, cursive">
-          <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle">EL LIBRO ABIERTO</textPath>
+    <div class="contenedor-central" style="margin-left: -12cm;">
+      <!-- TÍTULO CURVADO con tamaño reducido -->
+      <svg width="600" height="100" viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="curve" d="M100,80 Q300,0 500,80" />
+        </defs>
+        <text font-size="32" fill="#c43e70" font-family="Fredoka One, cursive" font-weight="normal">
+          <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle">
+            EL LIBRO ABIERTO
+          </textPath>
         </text>
       </svg>
-      <img src="librito.jpg" alt="Logo" class="logo-centro" />
-      <p class="subtitulo">TRADUCIENDO SABERES, PRESERVANDO HISTORIAS</p>
+
+      <!-- IMAGEN DEL LIBRO con tamaño reducido -->
+      <img src="librito.jpg" alt="Logo Open Book" class="logo-centro" style="margin-top: 20px;" />
+
+      <!-- SUBTÍTULO con tamaño reducido -->
+      <p class="subtitulo" data-trad="subtitulo" id="subtitulo">
+        TRADUCIENDO SABERES, PRESERVANDO HISTORIAS
+      </p>
     </div>
 
     <div class="selector-idioma">
-      <label>🌐 Idioma</label>
-      <select id="idioma" onchange="cambiarIdioma()">
+      <label for="idioma" style="font-size: 20px;">🌐</label>
+      <select id="idioma" onchange="cambiarIdioma()" style="padding: 4px 8px; font-size: 14px;">
         <option value="es">Español</option>
         <option value="en">English</option>
         <option value="pt">Português</option>
@@ -213,39 +337,51 @@
     </div>
 
     <div class="buscador">
-      <label>🔍 Buscar</label>
-      <input type="text" id="input-busqueda" placeholder="Buscar idioma" onkeypress="if(event.key === 'Enter') realizarBusqueda()" />
+      <label for="input-busqueda" style="font-size: 20px;">🔍</label>
+      <input 
+        type="text" 
+        id="input-busqueda" 
+        placeholder="Buscar idioma" 
+        aria-label="Buscador" 
+        style="padding: 5px 8px; font-size: 14px; border-radius: 4px; border: 1px solid #ccc; width: 180px;"
+        onkeypress="if(event.key === 'Enter') realizarBusqueda()"
+      />
     </div>
   </header>
 
+  <!-- Panel Login -->
   <div id="panel-login" class="panel oculto">
-    <h2>Iniciar Sesión</h2>
-    <label for="usuario-login">Usuario</label>
+    <h2 data-trad="loginTitulo" id="login-titulo">Iniciar Sesión</h2>
+    <label for="usuario-login" data-trad="usuario" id="login-label-usuario">Usuario</label>
     <input type="text" id="usuario-login" autocomplete="username" />
-    <label for="clave-login">Contraseña</label>
+    <label for="clave-login" data-trad="clave" id="login-label-clave">Contraseña</label>
     <input type="password" id="clave-login" autocomplete="current-password" />
     <div id="mensaje-login" class="mensaje-error"></div>
-    <button onclick="iniciarSesion()">Entrar</button>
-    <button onclick="cerrarPanelLogin()">Cancelar</button>
+    <button onclick="iniciarSesion()" data-trad="botonEntrar" id="btn-entrar">Entrar</button>
+    <button onclick="cerrarPanelLogin()" id="btn-cancelar-login">Cancelar</button>
   </div>
 
+  <!-- Panel Registro -->
   <div id="panel-registro" class="panel oculto">
-    <h2>Registrarse</h2>
-    <label for="usuario-registro">Nuevo usuario</label>
+    <h2 data-trad="registroTitulo" id="registro-titulo">Registrarse</h2>
+    <label for="usuario-registro" data-trad="nuevoUsuario" id="registro-label-usuario">Nuevo usuario</label>
     <input type="text" id="usuario-registro" autocomplete="username" />
-    <label for="clave-registro">Nueva contraseña</label>
+    <label for="clave-registro" data-trad="nuevaClave" id="registro-label-clave">Nueva contraseña</label>
     <input type="password" id="clave-registro" autocomplete="new-password" />
     <div id="mensaje-registro" class="mensaje-error"></div>
-    <button onclick="registrar()">Registrar</button>
-    <button onclick="cerrarPanelRegistro()">Cancelar</button>
+    <button onclick="registrar()" data-trad="botonRegistrar" id="btn-registrar">Registrar</button>
+    <button onclick="cerrarPanelRegistro()" id="btn-cancelar-registro">Cancelar</button>
   </div>
 
   <script>
     function mostrarPanel(panel) {
-      document.getElementById('panel-login').classList.add('oculto');
-      document.getElementById('panel-registro').classList.add('oculto');
-      if (panel === 'login') document.getElementById('panel-login').classList.remove('oculto');
-      else document.getElementById('panel-registro').classList.remove('oculto');
+      if (panel === 'login') {
+        document.getElementById('panel-login').classList.remove('oculto');
+        document.getElementById('panel-registro').classList.add('oculto');
+      } else if (panel === 'registro') {
+        document.getElementById('panel-registro').classList.remove('oculto');
+        document.getElementById('panel-login').classList.add('oculto');
+      }
     }
     function cerrarPanelLogin() {
       document.getElementById('panel-login').classList.add('oculto');
@@ -261,13 +397,13 @@
     }
     function cambiarIdioma() {
       const idioma = document.getElementById('idioma').value;
-      alert('Idioma seleccionado: ' + idioma);
+      alert('Cambiar idioma a: ' + idioma);
     }
     function realizarBusqueda() {
-      const q = document.getElementById('input-busqueda').value;
-      alert('Buscar: ' + q);
+      const busqueda = document.getElementById('input-busqueda').value.trim();
+      alert('Buscar: ' + busqueda);
     }
   </script>
-
 </body>
 </html>
+
