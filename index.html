@@ -2,15 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EL LIBRO ABIERTO</title>
-
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      /* Fondo animado con degradado más encendido y rápido */
       background: linear-gradient(270deg, #ffec99, #f8c3f4);
       background-size: 400% 400%;
       animation: gradientAnim 6s ease infinite;
@@ -19,322 +17,191 @@
     }
 
     @keyframes gradientAnim {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .encabezado-profesional {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 20px;
-      position: relative;
-      /* Fondo rosita bajito con opacidad 0.65 */
+      flex-direction: column;
+      align-items: center;
+      padding: 15px;
       background-color: rgba(248, 195, 244, 0.65);
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       border-radius: 12px;
-      margin: 20px;
+      margin: 10px;
       backdrop-filter: saturate(180%) blur(10px);
     }
-    .contenedor-izquierdo {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      position: relative;
-      z-index: 10;
-    }
+
     .lexi-img {
-      width: 120px;
-      height: auto;
-      user-select: none;
-      border-radius: 12px;
+      width: 100px;
+      border-radius: 10px;
       box-shadow: 0 4px 8px rgba(196, 62, 112, 0.3);
-      background-color: #fff;
+      margin-bottom: 10px;
     }
+
     .botones-header {
       display: flex;
-      gap: 12px;
-      align-items: center;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
     }
+
     .botones-header button {
-      height: 60px;
       font-size: 14px;
       cursor: pointer;
-      padding: 8px 12px;
+      padding: 8px;
       border-radius: 10px;
       border: none;
       background-color: #c43e70;
       color: white;
       font-weight: bold;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-width: 110px;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 8px rgba(196, 62, 112, 0.4);
+      transition: background-color 0.3s ease;
     }
+
     .botones-header button:hover {
       background-color: #a32d58;
-      box-shadow: 0 6px 12px rgba(163, 45, 88, 0.6);
     }
-    .botones-header button span.icon {
-      font-size: 24px;
-      margin-bottom: 4px;
+
+    .botones-header .icon {
+      font-size: 20px;
+      margin-right: 6px;
     }
+
     .contenedor-central {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex: 1;
-      margin-left: 8cm; /* Mantener para separar */
-      position: relative;
-      margin-top: -20px;
-    }
-    .contenedor-central svg {
-      margin-top: 0;
-      margin-bottom: -20px;
-    }
-    .logo-centro {
-      width: 250px;
-      height: auto;
-      display: block;
+      text-align: center;
       margin-top: 10px;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(196, 62, 112, 0.3);
+    }
+
+    .contenedor-central svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .logo-centro {
+      width: 140px;
+      margin: 10px auto;
+      display: block;
+      border-radius: 10px;
       background-color: #fff;
+      box-shadow: 0 6px 15px rgba(196, 62, 112, 0.3);
     }
-   .subtitulo {
-  font-family: 'Fredoka One', cursive;
-  font-size: 16px;
-  font-weight: bold;
-  color: #5b2a46;
-  margin-top: 10px;
-  text-align: center;
-  text-shadow: 0 1px 3px rgba(255,255,255,0.7);
-}
 
-
-    .selector-idioma {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      z-index: 15;
-      background: rgba(255, 255, 255, 0.8);
-      padding: 6px 10px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(196, 62, 112, 0.2);
-      font-size: 18px;
+    .subtitulo {
+      font-family: 'Fredoka One', cursive;
+      font-size: 16px;
+      font-weight: bold;
+      color: #5b2a46;
+      margin-top: 10px;
     }
+
+    .selector-idioma,
     .buscador {
-      position: absolute;
-      top: 60px;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      z-index: 15;
+      width: 90%;
+      margin-top: 10px;
       background: rgba(255, 255, 255, 0.8);
       padding: 6px 10px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(196, 62, 112, 0.2);
-      font-size: 18px;
+      border-radius: 10px;
+      text-align: center;
     }
+
+    .selector-idioma select,
     .buscador input {
-      border: 1px solid #c43e70;
-      border-radius: 6px;
-      padding: 5px 8px;
+      width: 100%;
+      padding: 6px;
       font-size: 14px;
-      width: 180px;
-      outline-offset: 2px;
-      transition: box-shadow 0.3s ease;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #c43e70;
     }
-    .buscador input:focus {
-      box-shadow: 0 0 6px 2px #c43e70aa;
-      border-color: #a32d58;
+
+    .panel {
+      background: linear-gradient(135deg, #f8c3f4cc, #ffcceeee);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(196, 62, 112, 0.25);
+      padding: 20px;
+      margin: 15px auto;
+      width: 90%;
+      max-width: 400px;
+      color: #5b2a46;
     }
-/* Panel compacto y estilizado rectangular */
-.panel {
-  margin: 15px;
-  background: linear-gradient(135deg, #f8c3f4cc, #ffcceeee);
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(196, 62, 112, 0.25);
-  padding: 20px 25px;
-  max-width: 450px;    /* Más ancho */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #5b2a46;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.panel:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(196, 62, 112, 0.4);
-}
-.panel h2 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 14px;
-  text-align: center;
-  color: #c43e70;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7);
-}
-.panel label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 5px;
-  margin-top: 10px;
-  color: #7b4061;
-}
-.panel input[type="text"],
-.panel input[type="password"] {
-  width: 100%;
-  padding: 8px 10px;
-  margin-top: 3px;
-  border: 2px solid #c43e70;
-  border-radius: 10px;
-  font-size: 14px;
-  outline-offset: 2px;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
-  color: #5b2a46;
-  background-color: #fff0f8;
-}
-.panel input[type="text"]:focus,
-.panel input[type="password"]:focus {
-  border-color: #a32d58;
-  box-shadow: 0 0 6px 2px #c43e70aa;
-}
-.panel .mensaje-error {
-  margin: 10px 0 0 0;
-  font-weight: 700;
-  color: #a32d58;
-  min-height: 1.2em;
-  text-align: center;
-}
 
-/* Botones con emojis */
-.panel button {
-  background-color: #c43e70;
-  color: white;
-  font-weight: 700;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 0;
-  cursor: pointer;
-  width: 100%;
-  margin-top: 15px;
-  font-size: 16px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 5px 10px rgba(196, 62, 112, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-.panel button:hover {
-  background-color: #a32d58;
-  box-shadow: 0 7px 14px rgba(163, 45, 88, 0.7);
-}
+    .panel h2 {
+      font-size: 18px;
+      color: #c43e70;
+      text-align: center;
+      margin-bottom: 12px;
+    }
 
+    .panel label {
+      font-weight: 600;
+      margin: 8px 0 4px;
+      display: block;
+    }
+
+    .panel input {
+      width: 100%;
+      padding: 8px;
+      border: 2px solid #c43e70;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      background-color: #fff0f8;
+    }
+
+    .panel .mensaje-error {
+      color: #a32d58;
+      font-weight: bold;
+      min-height: 20px;
+      text-align: center;
+    }
+
+    .panel button {
+      width: 100%;
+      padding: 10px;
+      background-color: #c43e70;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .panel button:hover {
+      background-color: #a32d58;
+    }
 
     .oculto {
       display: none;
     }
-    .mensaje-error {
-      margin: 8px 0;
-      font-weight: bold;
-      color: #a32d58;
-    }
-    input[type="text"], input[type="password"] {
-      width: 100%;
-      padding: 8px 10px;
-      margin: 6px 0 12px 0;
-      border: 1px solid #c43e70;
-      border-radius: 8px;
-      font-size: 14px;
-      outline-offset: 2px;
-      transition: box-shadow 0.3s ease;
-    }
-    input[type="text"]:focus, input[type="password"]:focus {
-      box-shadow: 0 0 6px 2px #c43e70aa;
-      border-color: #a32d58;
-    }
-    button#btn-entrar, button#btn-registrar, button#btn-cancelar-login, button#btn-cancelar-registro {
-      background-color: #c43e70;
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      padding: 10px;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 10px;
-      transition: background-color 0.3s ease;
-    }
-    button#btn-entrar:hover, button#btn-registrar:hover, button#btn-cancelar-login:hover, button#btn-cancelar-registro:hover {
-      background-color: #a32d58;
-    }
-    
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-
-
-
 </head>
 <body>
+
   <header class="encabezado-profesional">
-    <div class="contenedor-izquierdo">
-      <img src="lexi.jpg" alt="Muñequito académico" class="lexi-img" />
-
-      <div class="botones-header">
-        <button onclick="mostrarPanel('registro')" id="btn-registrarse">
-          <span class="icon">📝</span>
-          <span>Registrarse</span>
-        </button>
-        <button onclick="mostrarPanel('login')" id="btn-iniciar-sesion">
-          <span class="icon">🔑</span>
-          Iniciar sesión
-        </button>
-      </div>
+    <img src="lexi.jpg" alt="Muñequito académico" class="lexi-img" />
+    <div class="botones-header">
+      <button onclick="mostrarPanel('registro')"><span class="icon">📝</span> Registrarse</button>
+      <button onclick="mostrarPanel('login')"><span class="icon">🔑</span> Iniciar sesión</button>
     </div>
-    <div class="contenedor-central" style="margin-left: -12cm;">
-      <!-- TÍTULO CURVADO -->
-      <svg width="600" height="100" viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <path id="curve" d="M100,80 Q300,0 500,80" />
-        </defs>
-       <text font-size="44" fill="#c43e70" font-family="Fredoka One, cursive" font-weight="normal">
 
-  <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle">
-    EL LIBRO ABIERTO
-  </textPath>
-</text>
-
-
+    <div class="contenedor-central">
+      <svg viewBox="0 0 600 100">
+        <defs><path id="curve" d="M100,80 Q300,0 500,80" /></defs>
+        <text font-size="28" fill="#c43e70" font-family="Fredoka One, cursive">
+          <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle">EL LIBRO ABIERTO</textPath>
+        </text>
       </svg>
+      <img src="librito.jpg" alt="Logo" class="logo-centro" />
+      <p class="subtitulo">TRADUCIENDO SABERES, PRESERVANDO HISTORIAS</p>
+    </div>
 
-      <!-- IMAGEN DEL LIBRO -->
-      <img src="librito.jpg" alt="Logo Open Book" class="logo-centro" style="width: 250px; height: auto; margin-top: 20px;" />
-
-      <!-- SUBTÍTULO DEBAJO DE LA IMAGEN -->
-    <p class="subtitulo" data-trad="subtitulo" id="subtitulo" style="margin-top: 10px; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: bold; color: #c43e70;">
-  TRADUCIENDO SABERES, PRESERVANDO HISTORIAS
-</p>
-
-
-
-    <!-- SELECTOR IDIOMA A LA DERECHA -->
     <div class="selector-idioma">
-      <label for="idioma" style="font-size: 20px;">🌐</label>
-      <select id="idioma" onchange="cambiarIdioma()" style="padding: 4px 8px; font-size: 14px;">
+      <label>🌐 Idioma</label>
+      <select id="idioma" onchange="cambiarIdioma()">
         <option value="es">Español</option>
         <option value="en">English</option>
         <option value="pt">Português</option>
@@ -345,54 +212,40 @@
       </select>
     </div>
 
-    <!-- BUSCADOR -->
     <div class="buscador">
-      <label for="input-busqueda" style="font-size: 20px;">🔍</label>
-      <input 
-        type="text" 
-        id="input-busqueda" 
-        placeholder="Buscar idioma" 
-        aria-label="Buscador" 
-        style="padding: 5px 8px; font-size: 14px; border-radius: 4px; border: 1px solid #ccc; width: 180px;"
-        onkeypress="if(event.key === 'Enter') realizarBusqueda()"
-      />
+      <label>🔍 Buscar</label>
+      <input type="text" id="input-busqueda" placeholder="Buscar idioma" onkeypress="if(event.key === 'Enter') realizarBusqueda()" />
     </div>
   </header>
 
-<!-- Panel Login -->
-<div id="panel-login" class="panel oculto">
-  <h2 data-trad="loginTitulo" id="login-titulo">Iniciar Sesión</h2>
-  <label for="usuario-login" data-trad="usuario" id="login-label-usuario">Usuario</label>
-  <input type="text" id="usuario-login" autocomplete="username" />
-  <label for="clave-login" data-trad="clave" id="login-label-clave">Contraseña</label>
-  <input type="password" id="clave-login" autocomplete="current-password" />
-  <div id="mensaje-login" class="mensaje-error"></div>
-  <button onclick="iniciarSesion()" data-trad="botonEntrar" id="btn-entrar">Entrar</button>
-  <button onclick="cerrarPanelLogin()" id="btn-cancelar-login">Cancelar</button>
-</div>
+  <div id="panel-login" class="panel oculto">
+    <h2>Iniciar Sesión</h2>
+    <label for="usuario-login">Usuario</label>
+    <input type="text" id="usuario-login" autocomplete="username" />
+    <label for="clave-login">Contraseña</label>
+    <input type="password" id="clave-login" autocomplete="current-password" />
+    <div id="mensaje-login" class="mensaje-error"></div>
+    <button onclick="iniciarSesion()">Entrar</button>
+    <button onclick="cerrarPanelLogin()">Cancelar</button>
+  </div>
 
-<!-- Panel Registro -->
-<div id="panel-registro" class="panel oculto">
-  <h2 data-trad="registroTitulo" id="registro-titulo">Registrarse</h2>
-  <label for="usuario-registro" data-trad="nuevoUsuario" id="registro-label-usuario">Nuevo usuario</label>
-  <input type="text" id="usuario-registro" autocomplete="username" />
-  <label for="clave-registro" data-trad="nuevaClave" id="registro-label-clave">Nueva contraseña</label>
-  <input type="password" id="clave-registro" autocomplete="new-password" />
-  <div id="mensaje-registro" class="mensaje-error"></div>
-  <button onclick="registrar()" data-trad="botonRegistrar" id="btn-registrar">Registrar</button>
-  <button onclick="cerrarPanelRegistro()" id="btn-cancelar-registro">Cancelar</button>
-</div>
-
+  <div id="panel-registro" class="panel oculto">
+    <h2>Registrarse</h2>
+    <label for="usuario-registro">Nuevo usuario</label>
+    <input type="text" id="usuario-registro" autocomplete="username" />
+    <label for="clave-registro">Nueva contraseña</label>
+    <input type="password" id="clave-registro" autocomplete="new-password" />
+    <div id="mensaje-registro" class="mensaje-error"></div>
+    <button onclick="registrar()">Registrar</button>
+    <button onclick="cerrarPanelRegistro()">Cancelar</button>
+  </div>
 
   <script>
     function mostrarPanel(panel) {
-      if (panel === 'login') {
-        document.getElementById('panel-login').classList.remove('oculto');
-        document.getElementById('panel-registro').classList.add('oculto');
-      } else if (panel === 'registro') {
-        document.getElementById('panel-registro').classList.remove('oculto');
-        document.getElementById('panel-login').classList.add('oculto');
-      }
+      document.getElementById('panel-login').classList.add('oculto');
+      document.getElementById('panel-registro').classList.add('oculto');
+      if (panel === 'login') document.getElementById('panel-login').classList.remove('oculto');
+      else document.getElementById('panel-registro').classList.remove('oculto');
     }
     function cerrarPanelLogin() {
       document.getElementById('panel-login').classList.add('oculto');
@@ -401,23 +254,20 @@
       document.getElementById('panel-registro').classList.add('oculto');
     }
     function iniciarSesion() {
-      // Aquí podrías poner lógica de inicio de sesión
       alert('Intentando iniciar sesión...');
     }
     function registrar() {
-      // Aquí podrías poner lógica de registro
       alert('Intentando registrar usuario...');
     }
     function cambiarIdioma() {
       const idioma = document.getElementById('idioma').value;
-      alert('Cambiar idioma a: ' + idioma);
-      // Aquí va tu lógica de cambio de idioma real
+      alert('Idioma seleccionado: ' + idioma);
     }
     function realizarBusqueda() {
-      const busqueda = document.getElementById('input-busqueda').value.trim();
-      alert('Buscar: ' + busqueda);
-      // Aquí va tu lógica de búsqueda real
+      const q = document.getElementById('input-busqueda').value;
+      alert('Buscar: ' + q);
     }
   </script>
+
 </body>
 </html>
